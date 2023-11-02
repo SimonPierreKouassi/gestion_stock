@@ -36,7 +36,7 @@ Route.on('/add-product').render('pages.add-product')
 Route.post('/create-product','ProduitsController.create').as('create-product')
 Route.get('/produit_details/:id', 'ProduitsController.show')
 Route.post('/update_produit','ProduitsController.update')
-Route.post('/delete-produit/:id','ProduitsController.delete')
+Route.get('/delete_produit/:id','ProduitsController.delete')
 
 //type de produit
 Route.get('/type-produit','TypeProduitsController.index')

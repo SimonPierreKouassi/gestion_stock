@@ -31,7 +31,7 @@ export default class Produit extends BaseModel {
   public statut: Number
 
   @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
+  public createdAt: DateTime 
 
   @hasMany(() => TypeProduit)
   public typeProduit: HasMany<typeof TypeProduit>

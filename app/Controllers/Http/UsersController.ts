@@ -44,13 +44,15 @@ export default class UsersController {
       const total_total_vente = await Database.from('paiements').where({type_paiement:1, statut:1}).sum('montant as montant')
       const calcul_millions = total_total_vente[0].montant >= 1000000 ? (total_total_vente[0].montant / 1000000).toFixed(1) + 'M' : total_total_vente[0].montant;
       const calcul_milliers = total_total_vente[0].montant >= 100000 ? (total_total_vente[0].montant / 1000).toFixed(1) + 'K' : total_total_vente[0].montant;
-      let montant_total_vente = null
+      const calculnormal = total_total_vente[0].montant <= 1000 ? (total_total_vente[0].montant / 1000) : total_total_vente[0].montant;
+
+      let montant_total_vente = 0
       if(total_total_vente[0].montant >= 100000){
         montant_total_vente = calcul_milliers
       }else if(total_total_vente[0].montant >= 1000000){
         montant_total_vente = calcul_millions
       }else {
-        montant_total_vente = total_total_vente[0].montant
+        montant_total_vente = calculnormal
       }
       return view.render('pages/index',{total_client,total_vente,montant_total_vente})
     }

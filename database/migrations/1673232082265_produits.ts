@@ -11,7 +11,7 @@ export default class extends BaseSchema {
       table.integer('prix_entreprise').notNullable()
       table.integer('prix_particulier').notNullable()
       table.integer('quantite').notNullable()
-      table.string('image').notNullable()
+      table.string('image')
       table.text('description')
       table.integer('statut').defaultTo(0)
 
